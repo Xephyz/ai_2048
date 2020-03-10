@@ -17,13 +17,13 @@ def add_random_tile(board: list) -> list:
     new[x][y] = 2 if uniform(0,1) > 0.1 else 4
     return new
 
-def transpose(mat: list) -> list:
+def _transpose(mat: list) -> list:
     return [[mat[i][j] for i in range(len(mat))] for j in range(len(mat))]
 
-def reverse(mat: list) -> list:
+def _reverse(mat: list) -> list:
     return [[mat[j][i] for i in range(len(mat)-1, -1, -1)] for j in range(len(mat))]
 
-def compress(mat: list) -> list:
+def _compress(mat: list) -> list:
     new = [[0 for _ in range(len(mat))] for _ in range(len(mat))]
     for x in range(len(mat)):
         count = 0
@@ -33,7 +33,7 @@ def compress(mat: list) -> list:
                 count += 1
     return new
 
-def merge(mat: list) -> list:
+def _merge(mat: list) -> list:
     new = deepcopy(mat)
     for x in range(len(mat)):
         for y in range(len(mat)-1):
@@ -43,16 +43,16 @@ def merge(mat: list) -> list:
     return new
 
 def up(board: list) -> list:
-    return transpose(compress(merge(compress(transpose(board)))))
+    return _transpose(_compress(_merge(_compress(_transpose(board)))))
 
 def down(board: list) -> list:
-    return transpose(reverse(compress(merge(compress(reverse(transpose(board)))))))
+    return _transpose(_reverse(_compress(_merge(_compress(_reverse(_transpose(board)))))))
 
 def left(board: list) -> list:
-    return compress(merge(compress(board)))
+    return _compress(_merge(_compress(board)))
 
 def right(board: list) -> list:
-    return reverse(compress(merge(compress(reverse(board)))))
+    return _reverse(_compress(_merge(_compress(_reverse(board)))))
 
 
 if __name__ == "__main__":
