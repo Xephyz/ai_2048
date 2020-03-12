@@ -57,9 +57,12 @@ def right(board: list) -> list:
 
 if __name__ == "__main__":
     from pprint import pprint
+    from sys import platform
     import os
     import time
 
+    # unix = input("Are you using Linux? (Y/n): ")
+    clear_cmd = 'clear' if platform != "win32" else 'cls'
     print("How large do you want the board to be?")
     size = int(input("Size: "))
     print("Creating game...")
@@ -68,7 +71,7 @@ if __name__ == "__main__":
     time.sleep(0.5)
 
     while True:
-        os.system('cls')
+        os.system(clear_cmd)
         pprint(game)
         old = deepcopy(game)
         print("\nControls are wasd")
@@ -77,4 +80,5 @@ if __name__ == "__main__":
         elif turn.lower() == "a": game=left(game)
         elif turn.lower() == "s": game=down(game)
         elif turn.lower() == "d": game=right(game)
+        elif turn.lower() == "q": break
         if not game == old: game = add_random_tile(game)
