@@ -13,6 +13,7 @@ board = [[0, 0, 0, 0],
          [0, 0, 0, 0],
          [0, 0, 0, 0]]
 
+points = 0
 # -------------------------------------------------------------------------------------------------------- PRINT BOARD -
 def printBoard():
     result = ""
@@ -27,6 +28,7 @@ def printBoard():
 
 # ------------------------------------------------------------------------------------------------- ROW COLLAPSE RIGHT -
 def rowCollapseRight(row):
+    global points
     # COMPRESS to the right by creating a new row with the numbers right next to each other
     newRow = []
     zeros = 0
@@ -45,6 +47,7 @@ def rowCollapseRight(row):
     for j in range(len(board) - 1, 0, -1):
         if board[row][j] == board[row][j - 1]:
             board[row][j] *= 2
+            points += board[row][j] # adds points
             board[row][j - 1] = 0
     # COMPRESS again ..
     newRow = []
@@ -61,6 +64,7 @@ def rowCollapseRight(row):
 
 # -------------------------------------------------------------------------------------------------- ROW COLLAPSE LEFT -
 def rowCollapseLeft(row):
+    global points
     # COMPRESS to the left by creating a new row with the numbers right next to each other
     newRow = []
     zeros = 0
@@ -79,6 +83,7 @@ def rowCollapseLeft(row):
     for j in range(0, len(board)-1):
         if board[row][j] == board[row][j + 1]:
             board[row][j] *= 2
+            points += board[row][j] # adds points
             board[row][j + 1] = 0
     # COMPRESS again ..
     newRow = []
@@ -95,6 +100,7 @@ def rowCollapseLeft(row):
 
 # ------------------------------------------------------------------------------------------------- COLUMN COLLAPSE UP -
 def columnCollapseUp(column):
+    global points
     # COMPRESS to the top by creating a new column with the numbers right on top of each other
     newColumn = []
     zeros = 0
@@ -113,6 +119,7 @@ def columnCollapseUp(column):
     for i in range(0, len(board) - 1):
         if board[i][column] == board[i + 1][column]:
             board[i][column] *= 2
+            points += board[i][column] # adds points
             board[i + 1][column] = 0
     # COMPRESS again ..
     newColumn = []
@@ -129,6 +136,7 @@ def columnCollapseUp(column):
 
 # ----------------------------------------------------------------------------------------------- COLUMN COLLAPSE DOWN -
 def columnCollapseDown(column):
+    global points
     # COMPRESS to the bottom by creating a new column with the numbers right on top of each other
     newColumn = []
     zeros = 0
@@ -148,6 +156,7 @@ def columnCollapseDown(column):
     for i in range(len(board) - 1, 0, -1):
         if board[i][column] == board[i - 1][column]:
             board[i][column] *= 2
+            points += board[i][column] # adds points
             board[i - 1][column] = 0
 
     # COMPRESS again ..
@@ -225,22 +234,26 @@ def down():
 newGame()
 
 while True:
-    time.sleep(0.01)
+    time.sleep(0.5)
     os.system('cls')
     left()
     printBoard()
+    print(points)
 
-    time.sleep(0.01)
+    time.sleep(0.5)
     os.system('cls')
     up()
     printBoard()
+    print(points)
 
-    time.sleep(0.01)
+    time.sleep(0.5)
     os.system('cls')
     right()
     printBoard()
+    print(points)
 
-    time.sleep(0.01)
+    time.sleep(0.5)
     os.system('cls')
     down()
     printBoard()
+    print(points)
