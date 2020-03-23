@@ -6,7 +6,7 @@ We view the game board as an n*n matrix
 from copy import deepcopy
 from random import randint, uniform
 
-def new_matrix(size: int) -> list:
+def new_matrix(size: int=4) -> list:
     return [[0 for _ in range(size)] for _ in range(size)]
 
 def add_random_tile(board: list) -> list:
@@ -53,6 +53,14 @@ def left(board: list) -> list:
 
 def right(board: list) -> list:
     return _reverse(_compress(_merge(_compress(_reverse(board)))))
+
+def print_board(board: list) -> None:
+    result = ""
+    for i in range(len(board)):
+        for j in range(len(board)):
+            result += f'{board[i][j]}\t' if board[i][j] != 0 else '.\t'
+        result += '\n\n\n' if i < len(board)-1 else ''
+    print(result)
 
 
 if __name__ == "__main__":
