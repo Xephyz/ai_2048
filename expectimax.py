@@ -1,6 +1,6 @@
 # Expectimax algorithm!
 from logic import check_game, get_possible_states, up, down, left, right
-from ai import evaluate
+from heuristics import evaluate
 
 def expectimax(board: list, depth: int = 2):
     if depth == 0 or check_game(board) == -1:
