@@ -13,6 +13,7 @@ if __name__ == "__main__":
     g = Game()
     d = 3  # default depth
     # g.board = [[2,16,0,2],[2,8,4,8],[4,256,64,32],[1024,4,128,4]]
+    print('Starting, now!')
 
     while True:
         # system(clear_cmd)
@@ -25,8 +26,9 @@ if __name__ == "__main__":
         pos_moves.append(exp(up(g.board), d) if up(g.board) != g.board else -1001)
 
         best_move = pos_moves.index(max(pos_moves))
-        if best_move == -1001:
+        if max(pos_moves) == -1001:
             print('Game over')
+            pb(g.board)
             break
 
         system(clear_cmd)
@@ -37,4 +39,4 @@ if __name__ == "__main__":
         print(pos_moves)
         pb(g.board)
 
-        # sleep(0.5)
+        sleep(0.5)
