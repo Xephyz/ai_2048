@@ -22,7 +22,7 @@ def _build_sneks(p1: list = snake1):
     return [p1, p2, p3, p4, p5, p6, p7, p8]
 
 
-class AI():
+class Heuristic():
     def __init__(self, init_matrix: list = snake1):
         self._weight_matrix = _build_sneks(init_matrix)
 
