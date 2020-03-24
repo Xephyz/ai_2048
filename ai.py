@@ -3,7 +3,6 @@
 from game import Game
 from logic import left, right, down, up, print_board as pb
 from expectimax import expectimax as exp
-from copy import deepcopy
 from sys import platform
 from os import system
 from time import sleep
@@ -16,17 +15,19 @@ if __name__ == "__main__":
     # g.board = [[2,16,0,2],[2,8,4,8],[4,256,64,32],[1024,4,128,4]]
 
     while True:
-        old = deepcopy(g.board)
         # system(clear_cmd)
         # pb(g.board)
 
         pos_moves = []
-        pos_moves.append(exp(left(g.board), d) if left(g.board) != old else -1001)
-        pos_moves.append(exp(right(g.board), d) if right(g.board) != old else -1001)
-        pos_moves.append(exp(down(g.board), d) if down(g.board) != old else -1001)
-        pos_moves.append(exp(up(g.board), d) if up(g.board) != old else -1001)
+        pos_moves.append(exp(left(g.board), d) if left(g.board) != g.board else -1001)
+        pos_moves.append(exp(right(g.board), d) if right(g.board) != g.board else -1001)
+        pos_moves.append(exp(down(g.board), d) if down(g.board) != g.board else -1001)
+        pos_moves.append(exp(up(g.board), d) if up(g.board) != g.board else -1001)
 
         best_move = pos_moves.index(max(pos_moves))
+        if best_move == -1001:
+            print('Game over')
+            break
 
         system(clear_cmd)
         if best_move == 0: g.move('l')
