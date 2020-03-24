@@ -93,6 +93,18 @@ def print_board(board: list, endl: str = '\n') -> None:
         result += endl if i < len(board)-1 else ''
     print(result)
 
+def get_possible_states(board: list) -> tuple:
+    twos = []
+    fours = []
+    for row in range(len(board)):
+        for tile in range(len(board)):
+            if not board[row][tile]:
+                twos.append(deepcopy(board))
+                fours.append(deepcopy(board))
+                twos[-1][row][tile] = 2
+                fours[-1][row][tile] = 4
+    return twos, fours
+
 
 if __name__ == "__main__":
     from pprint import pprint
