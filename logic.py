@@ -53,14 +53,15 @@ def reverse(mat: list) -> list:
     return [[mat[j][i] for i in range(len(mat)-1, -1, -1)] for j in range(len(mat))]
 
 def _compress(mat: list) -> list:
-    new = [[0 for _ in range(len(mat))] for _ in range(len(mat))]
-    for x in range(len(mat)):
-        count = 0
-        for y in range(len(mat)):
-            if mat[x][y] != 0:
-                new[x][count] = mat[x][y]
-                count += 1
-    return new
+    # new = [[0 for _ in range(len(mat))] for _ in range(len(mat))]
+    # for x in range(len(mat)):
+    #     count = 0
+    #     for y in range(len(mat)):
+    #         if mat[x][y] != 0:
+    #             new[x][count] = mat[x][y]
+    #             count += 1
+    # return new
+    return [sorted(row, key=lambda x: not x) for row in mat]
 
 def _merge(mat: list) -> list:
     global points
