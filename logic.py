@@ -6,6 +6,9 @@ We view the game board as an n*n matrix
 from copy import deepcopy
 from random import randint, uniform
 
+# Global points
+points: int = None
+
 def new_matrix(size: int=4) -> list:
     return [[0 for _ in range(size)] for _ in range(size)]
 
@@ -34,11 +37,13 @@ def _compress(mat: list) -> list:
     return new
 
 def _merge(mat: list) -> list:
+    global points
     new = deepcopy(mat)
     for x in range(len(mat)):
         for y in range(len(mat)-1):
             if new[x][y] == new[x][y+1] and new[x][y] != 0:
                 new[x][y] *= 2
+                if points is not None: points += new[x][y]
                 new[x][y+1] = 0
     return new
 
@@ -69,6 +74,8 @@ if __name__ == "__main__":
     import os
     import time
 
+    points = 0
+
     # unix = input("Are you using Linux? (Y/n): ")
     clear_cmd = 'clear' if platform != "win32" else 'cls'
     print("How large do you want the board to be?")
@@ -80,7 +87,8 @@ if __name__ == "__main__":
 
     while True:
         os.system(clear_cmd)
-        pprint(game)
+        print(f'points: {points}')
+        pprint(game, width=20)
         old = deepcopy(game)
         print("\nControls are wasd")
         turn = input("Move: ")
