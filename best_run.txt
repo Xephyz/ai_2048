@@ -1,0 +1,9 @@
+[-1001, -1001, -1001, -1001]
+2       4       16      2
+8       32      4       8
+4096    64      16      64
+8       1024    4       2
+Going left
+  File "ai.py", line 35, in <module>
+    system(clear_cmd)
+KeyboardInterrupt

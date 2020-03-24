@@ -23,9 +23,9 @@ def add_random_tile(board: list) -> list:
 def check_game(board: list) -> int:
     """Checks game state: 
     returns: 
-        1  if game is won
+         1 if game is won
         -1 if game is lost
-        0  if neither
+         0 if neither
     """
     # result = 0
     # Check game is "won"
@@ -99,8 +99,8 @@ def get_possible_states(board: list) -> tuple:
     for row in range(len(board)):
         for tile in range(len(board)):
             if not board[row][tile]:
-                twos.append(deepcopy(board))
-                fours.append(deepcopy(board))
+                twos.append(board)
+                fours.append(board)
                 twos[-1][row][tile] = 2
                 fours[-1][row][tile] = 4
     return twos, fours

@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     g = Game()
     d = 3  # default depth
-    g.board = [[2,16,0,2],[2,8,4,8],[4,256,64,32],[1024,4,128,4]]
+    # g.board = [[2,16,0,2],[2,8,4,8],[4,256,64,32],[1024,4,128,4]]
 
     while True:
         old = deepcopy(g.board)
@@ -28,11 +28,11 @@ if __name__ == "__main__":
 
         best_move = pos_moves.index(max(pos_moves))
 
+        system(clear_cmd)
         if best_move == 0: g.move('l')
         elif best_move == 1: g.move('r')
         elif best_move == 2: g.move('d')
         else: g.move('u')
-        system(clear_cmd)
         print(pos_moves)
         pb(g.board)
 
