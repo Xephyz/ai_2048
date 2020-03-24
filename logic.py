@@ -20,10 +20,36 @@ def add_random_tile(board: list) -> list:
     new[x][y] = 2 if uniform(0,1) > 0.1 else 4
     return new
 
-def _transpose(mat: list) -> list:
+def check_game(board: list) -> int:
+    """Checks game state: 
+    returns: 
+        1  if game is won
+        -1 if game is lost
+        0  if neither
+    """
+    # result = 0
+    # Check game is "won"
+    for row in board:
+        if 2048 in row: return 1
+
+    # Quicker check game is not lost
+    for row in board:
+        if 0 in row: return 0
+    
+    # Slow check
+    for row in board:
+        for i in range(len(row)-1):
+            if row[i] == row[i+1]: return 0
+    for row in transpose(board):
+        for i in range(len(row)-1):
+            if row[i] == row[i+1]: return 0
+    return -1
+
+
+def transpose(mat: list) -> list:
     return [[mat[i][j] for i in range(len(mat))] for j in range(len(mat))]
 
-def _reverse(mat: list) -> list:
+def reverse(mat: list) -> list:
     return [[mat[j][i] for i in range(len(mat)-1, -1, -1)] for j in range(len(mat))]
 
 def _compress(mat: list) -> list:
@@ -48,23 +74,23 @@ def _merge(mat: list) -> list:
     return new
 
 def up(board: list) -> list:
-    return _transpose(_compress(_merge(_compress(_transpose(board)))))
+    return transpose(_compress(_merge(_compress(transpose(board)))))
 
 def down(board: list) -> list:
-    return _transpose(_reverse(_compress(_merge(_compress(_reverse(_transpose(board)))))))
+    return transpose(reverse(_compress(_merge(_compress(reverse(transpose(board)))))))
 
 def left(board: list) -> list:
     return _compress(_merge(_compress(board)))
 
 def right(board: list) -> list:
-    return _reverse(_compress(_merge(_compress(_reverse(board)))))
+    return reverse(_compress(_merge(_compress(reverse(board)))))
 
-def print_board(board: list) -> None:
+def print_board(board: list, endl: str = '\n') -> None:
     result = ""
     for i in range(len(board)):
         for j in range(len(board)):
             result += f'{board[i][j]}\t' if board[i][j] != 0 else '.\t'
-        result += '\n\n\n' if i < len(board)-1 else ''
+        result += endl if i < len(board)-1 else ''
     print(result)
 
 
@@ -88,7 +114,8 @@ if __name__ == "__main__":
     while True:
         os.system(clear_cmd)
         print(f'points: {points}')
-        pprint(game, width=20)
+        # pprint(game, width=20)
+        print_board(game)
         old = deepcopy(game)
         print("\nControls are wasd")
         turn = input("Move: ")
