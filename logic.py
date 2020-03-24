@@ -3,17 +3,16 @@ This file contains all logic for handling a 2048 game.
 We view the game board as an n*n matrix
 """
 
-from copy import deepcopy
 from random import randint, uniform
 
 # Global points
 points: int = None
 
 def new_matrix(size: int=4) -> list:
-    return [[0 for _ in range(size)] for _ in range(size)]
+    return [[0] * size] * size
 
 def add_random_tile(board: list) -> list:
-    new = deepcopy(board)
+    new = [[item for item in row] for row in board]
     x, y = [randint(0, len(board)-1) for _ in range(2)]
     while new[x][y] != 0:
         x, y = [randint(0, len(board)-1) for _ in range(2)]
@@ -57,7 +56,7 @@ def _compress(mat: list) -> list:
 
 def _merge(mat: list) -> list:
     global points
-    new = deepcopy(mat)
+    new = [[item for item in row] for row in mat]
     for x in range(len(mat)):
         for y in range(len(mat)-1):
             if new[x][y] == new[x][y+1] and new[x][y] != 0:
@@ -121,7 +120,7 @@ if __name__ == "__main__":
         print(f'points: {points}')
         # pprint(game, width=20)
         print_board(game)
-        old = deepcopy(game)
+        old = [[item for item in row] for row in game]
         print("\nControls are wasd")
         turn = input("Move: ")
         if turn.lower() == "w": game=up(game)
