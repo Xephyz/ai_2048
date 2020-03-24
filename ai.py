@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     g = Game()
     d = 3  # default depth
-    g.board = [[0,0,0,0],[0,0,2,0],[2,0,0,0],[0,0,0,0]]
+    g.board = [[2,16,0,2],[2,8,4,8],[4,256,64,32],[1024,4,128,4]]
 
     while True:
         old = deepcopy(g.board)
