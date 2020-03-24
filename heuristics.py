@@ -21,6 +21,23 @@ def _build_sneks(p1: list = snake1):
     p8 = tr(p7)
     return [p1, p2, p3, p4, p5, p6, p7, p8]
 
+sneks = _build_sneks()
+
+def _get_state_value(state: list):
+    sums = [0]*len(sneks)
+
+    for i in range(len(state)):
+        for j in range(len(state)):
+            for k in range(len(sneks)):
+                sums[k] += sneks[k][i][j] * state[i][j]
+
+    return max(sums)
+
+def evaluate(state: list):
+    if cg(state) == -1: return -1000
+    evalue = _get_state_value(state)
+    if cg(state) == 1: return evalue + 1000
+    else: return evalue
 
 class Heuristic():
     def __init__(self, init_matrix: list = snake1):
@@ -30,7 +47,7 @@ class Heuristic():
         if cg(state) == -1: return -1000
         evalue = self._get_state_value(state)
         if cg(state) == 1: return evalue + 1000
-        else return evalue
+        else: return evalue
 
     def _get_state_value(self, state: list):
         sums = [0]*len(self._weight_matrix)
