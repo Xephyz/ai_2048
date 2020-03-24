@@ -18,6 +18,8 @@ if __name__ == "__main__":
     while True:
         # system(clear_cmd)
         # pb(g.board)
+        zeroes = sum([row.count(0) for row in g.board])
+        d = 7 if zeroes < 2 else 5 if zeroes < 4 else 3
 
         pos_moves = []
         pos_moves.append(exp(left(g.board), d) if left(g.board) != g.board else -1001)
@@ -39,4 +41,4 @@ if __name__ == "__main__":
         print(pos_moves)
         pb(g.board)
 
-        sleep(0.5)
+        # sleep(0.5)
