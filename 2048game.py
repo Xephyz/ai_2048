@@ -8,10 +8,10 @@ from copy import deepcopy
 boardSize = 4
 
 manualSetup = False
-board = [[0, 0, 0, 0],
-         [0, 0, 0, 0],
-         [0, 0, 0, 0],
-         [0, 0, 0, 0]]
+board = [[16, 9, 8, 1],
+         [15, 10, 7, 2],
+         [14, 11, 6, 3],
+         [13, 12, 5, 4]]
 
 points = 0
 # -------------------------------------------------------------------------------------------------------- PRINT BOARD -
@@ -234,25 +234,25 @@ def down():
 newGame()
 
 while True:
-    time.sleep(0.5)
+    time.sleep(0.01)
     os.system('cls')
     left()
     printBoard()
     print(points)
 
-    time.sleep(0.5)
+    time.sleep(0.01)
     os.system('cls')
     up()
     printBoard()
     print(points)
 
-    time.sleep(0.5)
+    time.sleep(0.01)
     os.system('cls')
     right()
     printBoard()
     print(points)
 
-    time.sleep(0.5)
+    time.sleep(0.01)
     os.system('cls')
     down()
     printBoard()
