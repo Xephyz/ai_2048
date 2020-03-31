@@ -82,13 +82,12 @@ def right(board: list) -> list:
     return reverse(_compress(_merge(_compress(reverse(board)))))
 
 
-def print_board(board: list, endl: str = '\n') -> None:
+def print_board(board: list, endl: str = '\n\n\n') -> None:
     result = ""
     for i in range(len(board)):
         for j in range(len(board)):
             result += f'{board[i][j]}\t' if board[i][j] != 0 else '.\t'
         result += endl if i < len(board) - 1 else ''
-        result += "\n\n"
     print(result)
 
 
