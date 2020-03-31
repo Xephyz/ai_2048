@@ -10,14 +10,14 @@ class Game:
 
     def move(self, move: str) -> None:
         if move == 'l':
-            print('Going left')
+            print('Going left\n')
             self.board = add_random_tile(left(self.board)) if left(self.board) != self.board else self.board
         elif move == 'r':
-            print('Going right')
+            print('Going right\n')
             self.board = add_random_tile(right(self.board)) if right(self.board) != self.board else self.board
         elif move == 'd':
-            print('Going down')
+            print('Going down\n')
             self.board = add_random_tile(down(self.board)) if down(self.board) != self.board else self.board
         elif move == 'u':
-            print('Going up')
+            print('Going up\n')
             self.board = add_random_tile(up(self.board)) if up(self.board) != self.board else self.board
