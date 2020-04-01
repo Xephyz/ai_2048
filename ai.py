@@ -18,7 +18,7 @@ if __name__ == "__main__":
             zeroes = sum([row.count(0) for row in g.board])
             d = 7 if zeroes < 2 else 5 if zeroes < 4 else 3
 
-        prev_board = [[item for item in row] for row in g.board]
+        prev_board = [list(row) for row in g.board]
 
         pos_moves = []
         pos_moves.append(exp(left(g.board), d) if left(g.board) != g.board else -1001)
