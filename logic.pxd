@@ -25,4 +25,5 @@ cpdef list down(list board)
 cpdef list left(list board)
 cpdef list right(list board)
 
+@cython.locals(row=cython.int, tile=cython.int)
 cpdef get_possible_states(list board)

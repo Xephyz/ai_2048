@@ -98,13 +98,14 @@ def print_board(list board, str endl = '\n\n\n') -> None:
 
 
 cpdef get_possible_states(list board):
+    cdef int row, tile
     twos = []
     fours = []
     for row in range(len(board)):
         for tile in range(len(board)):
             if not board[row][tile]:
-                twos.append(board)
-                fours.append(board)
+                twos.append([list(_row) for _row in board])
+                fours.append([list(_row) for _row in board])
                 twos[-1][row][tile] = 2
                 fours[-1][row][tile] = 4
     return twos, fours
