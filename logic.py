@@ -104,14 +104,10 @@ def get_possible_states(board: list) -> tuple:
     return twos, fours
 
 
-'''
-# Game for human
+# Game for humans
 if __name__ == "__main__":
-    from pprint import pprint
     from sys import platform
     import os
-
-    points = 0
 
     clear_cmd = 'clear' if platform != "win32" else 'cls'
     print("How large do you want the board to be?")
@@ -122,11 +118,11 @@ if __name__ == "__main__":
 
     while True:
         os.system(clear_cmd)
-        print(f'points: {points}')
         # pprint(game, width=20)
         print_board(game)
         old = [list(row) for row in game]
-        print("\nControls are wasd")
+        print("\nControls are wasd - w=↑, a=←, s=↓, d=→")
+        print('To quit, enter "q"')
         turn = input("Move: ")
         if turn.lower() == "w":
             game = up(game)
@@ -139,4 +135,4 @@ if __name__ == "__main__":
         elif turn.lower() == "q":
             break
         if not game == old: game = add_random_tile(game)
-'''
+
