@@ -97,8 +97,8 @@ def get_possible_states(board: list) -> tuple:
     for row in range(len(board)):
         for tile in range(len(board)):
             if not board[row][tile]:
-                twos.append(board)
-                fours.append(board)
+                twos.append([list(_row) for _row in board])
+                fours.append([list(_row) for _row in board])
                 twos[-1][row][tile] = 2
                 fours[-1][row][tile] = 4
     return twos, fours
