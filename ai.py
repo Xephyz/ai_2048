@@ -27,12 +27,17 @@ if __name__ == "__main__":
         pos_moves.append(exp(up(g.board), d) if up(g.board) != g.board else -1001)
 
         best_move = pos_moves.index(max(pos_moves))
-        readable_moves = ['Invalid Move' if move == -1001 else 'Game Over' if move == -1000 else f'{move:.0f}' for move in pos_moves]
+        readable_moves = ['Invalid Move' if move == -1001 else
+                          'Game Over' if move == -1000 else
+                          f'{move:.0f}' for move in pos_moves]
 
         if max(pos_moves) == -1001:
-            #system(clear_cmd)
+            # system(clear_cmd)
             print('Game over\n')
-            print(f'Left:\t{readable_moves[0]}\nRight:\t{readable_moves[1]}\nDown:\t{readable_moves[2]}\nUp:\t{readable_moves[3]}',"\n")
+            print(f'Left:\t{readable_moves[0]}\n\
+                    Right:\t{readable_moves[1]}\n\
+                    Down:\t{readable_moves[2]}\n\
+                    Up:\t{readable_moves[3]}\n')
             pb(g.board)
             break
 
@@ -46,5 +51,8 @@ if __name__ == "__main__":
         else:
             g.move('u')
 
-        print(f'Left:\t{readable_moves[0]}\nRight:\t{readable_moves[1]}\nDown:\t{readable_moves[2]}\nUp:\t{readable_moves[3]}',"\n")
+        print(f'Left:\t{readable_moves[0]}\n\
+                Right:\t{readable_moves[1]}\n\
+                Down:\t{readable_moves[2]}\n\
+                Up:\t{readable_moves[3]}\n')
         pb(prev_board)
