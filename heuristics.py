@@ -8,10 +8,10 @@ pattern = [[16,   9,  8,  1],
 
 def _build_patterns(p1: list = pattern):
     p2 = tr(p1)
-    p3 = tr(rev(p2))
-    p4 = rev(tr(p1))
-    p5 = rev(tr(rev(tr(p4))))
-    p6 = tr(p5)
+    p3 = rev(p1)
+    p4 = rev(p2)
+    p5 = tr(p4)
+    p6 = tr(p3)
     p7 = rev(p5)
     p8 = tr(p7)
     return [p1, p2, p3, p4, p5, p6, p7, p8]
