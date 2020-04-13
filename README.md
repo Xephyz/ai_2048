@@ -8,28 +8,37 @@ If you do not have Python 3.7 (or higher) installed, you can find instructions t
 
 To run the program, open a terminal in this directory and run the following command:
 
-windows:
+**windows**:<br>
+Either
 ```cmd
 py -3 ai.py
 ```
+or
+```cmd
+python ai.py
+```
 
-linux (and mac*):
+**linux** (and mac*):
 ```bash
 python3 ai.py
 ```
 
 
 ### Manual play (simplified game)
-If you want to play the game yourself - instead of the AI, you have to remove the block comment in the bottom of the `ai.py` file.
-The block comments look like this: `"""`
-If you remove those, you can play the game manually like this:
+If you want to play the game yourself - instead of the AI, like before you need Python 3.7+ installed.<br>
+Like before, you need a terminal open in this directory, then run the following command:
 
-windows:
+**windows**:<br>
+Either
 ```cmd
 py -3 logic.py
 ```
+or
+```cmd
+python logic.py
+```
 
-linux (and mac*):
+**linux** (and mac*):
 ```bash
 python3 logic.py
 ```
